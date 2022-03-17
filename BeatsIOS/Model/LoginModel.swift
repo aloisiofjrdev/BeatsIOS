@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+
+struct LoginModel {
+    let nameLabel: String
+    let descriptionLabel: String
+}

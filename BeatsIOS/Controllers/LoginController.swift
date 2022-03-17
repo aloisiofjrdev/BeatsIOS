@@ -18,8 +18,9 @@ class LoginController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signInLabel: UILabel!
     @IBOutlet weak var pwTextField: UITextField!
-    @IBOutlet weak var siginButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
     
     //MARK: - Lifecycle
     
@@ -64,12 +65,15 @@ class LoginController: UIViewController {
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         loginButton.setTitleColor(.white, for: .normal)
         
-        let attsSB: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 1), .font: UIFont.boldSystemFont(ofSize: 15)]
-        let attibutedTitleSignin = NSMutableAttributedString(string: "Ainda não é cadastrado? ", attributes: attsSB)
-        let greenAttsSB: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor .green, .font: UIFont.boldSystemFont(ofSize: 15)]
-        attibutedTitleSignin.append(NSAttributedString(string: "Inscreve-se", attributes: greenAttsSB))
         
-        siginButton.setAttributedTitle(attibutedTitleSignin, for: .normal)
+        signInLabel.text = "Ainda não é cadastrado? "
+        signInLabel.textColor = .white
+        signInLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        
+        let greenAttsSB: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor .green, .font: UIFont.boldSystemFont(ofSize: 15)]
+        let attibutedTitleSignin = NSMutableAttributedString(string: "Inscreve-se", attributes: greenAttsSB )
+        signInButton.setAttributedTitle(attibutedTitleSignin, for: .normal)
+        
 
         
     }

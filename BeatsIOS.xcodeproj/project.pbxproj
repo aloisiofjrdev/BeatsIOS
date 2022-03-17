@@ -15,6 +15,9 @@
 		7FBA13C627E36C830066CCE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FBA13C427E36C830066CCE0 /* LaunchScreen.storyboard */; };
 		7FBA13D127E36C840066CCE0 /* BeatsIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA13D027E36C840066CCE0 /* BeatsIOSTests.swift */; };
 		7FBA13DC27E36C840066CCE0 /* BeatsIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA13DB27E36C840066CCE0 /* BeatsIOSUITests.swift */; };
+		7FBA13F327E379890066CCE0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA13F227E379890066CCE0 /* LoginController.swift */; };
+		7FBA13F827E37E340066CCE0 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA13F727E37E340066CCE0 /* LoginModel.swift */; };
+		7FBA13FD27E37E430066CCE0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA13FC27E37E430066CCE0 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		7FBA13D727E36C840066CCE0 /* BeatsIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatsIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FBA13DB27E36C840066CCE0 /* BeatsIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatsIOSUITests.swift; sourceTree = "<group>"; };
 		7FBA13DD27E36C840066CCE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FBA13F227E379890066CCE0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		7FBA13F727E37E340066CCE0 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		7FBA13FC27E37E430066CCE0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 		7FBA13B827E36C810066CCE0 /* BeatsIOS */ = {
 			isa = PBXGroup;
 			children = (
+				7FBA13EE27E36E690066CCE0 /* Controllers */,
+				7FBA13ED27E36E4B0066CCE0 /* ViewModels */,
+				7FBA13EC27E36E430066CCE0 /* Model */,
 				7FBA13B927E36C810066CCE0 /* AppDelegate.swift */,
 				7FBA13BB27E36C810066CCE0 /* SceneDelegate.swift */,
 				7FBA13BD27E36C810066CCE0 /* ViewController.swift */,
@@ -126,6 +135,30 @@
 				7FBA13DD27E36C840066CCE0 /* Info.plist */,
 			);
 			path = BeatsIOSUITests;
+			sourceTree = "<group>";
+		};
+		7FBA13EC27E36E430066CCE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7FBA13F727E37E340066CCE0 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7FBA13ED27E36E4B0066CCE0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7FBA13FC27E37E430066CCE0 /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7FBA13EE27E36E690066CCE0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7FBA13F227E379890066CCE0 /* LoginController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +291,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FBA13F827E37E340066CCE0 /* LoginModel.swift in Sources */,
 				7FBA13BE27E36C810066CCE0 /* ViewController.swift in Sources */,
+				7FBA13FD27E37E430066CCE0 /* LoginViewModel.swift in Sources */,
+				7FBA13F327E379890066CCE0 /* LoginController.swift in Sources */,
 				7FBA13BA27E36C810066CCE0 /* AppDelegate.swift in Sources */,
 				7FBA13BC27E36C810066CCE0 /* SceneDelegate.swift in Sources */,
 			);

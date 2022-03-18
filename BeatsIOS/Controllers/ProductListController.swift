@@ -16,6 +16,8 @@ class ProductListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
+    @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var doubtButton: UIButton!
     
     //MARK: - LifeCycle
     
@@ -51,6 +53,12 @@ class ProductListController: UIViewController {
     
     func configureUI() {
         
+        logOutButton.layer.cornerRadius = 20
+        logOutButton.tintColor = .white
+        logOutButton.setTitle("Logout", for: .normal)
+        logOutButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        logOutButton.setTitleColor(.white, for: .normal)
+        
     }
     
 }
@@ -70,7 +78,7 @@ extension ProductListController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "BeatsCell", for: indexPath) as? BeatsCellTableViewCell {
-            cell.labelTest.text = "Aloaloalo"
+            //cell.labelTest.text = "Aloaloalo"
             return cell
         }
 

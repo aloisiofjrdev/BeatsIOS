@@ -22,12 +22,21 @@ class LoginController: UIViewController {
     @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     //MARK: - Helpers
@@ -66,6 +75,7 @@ class LoginController: UIViewController {
         loginButton.setTitleColor(.white, for: .normal)
         
         
+        
         signInLabel.text = "Ainda não é cadastrado? "
         signInLabel.textColor = .white
         signInLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -75,6 +85,13 @@ class LoginController: UIViewController {
         signInButton.setAttributedTitle(attibutedTitleSignin, for: .normal)
         
 
+        
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func entrarButton(_ sender: Any) {
+        self.navigationController?.pushViewController(ProductListController(), animated: true)
         
     }
 

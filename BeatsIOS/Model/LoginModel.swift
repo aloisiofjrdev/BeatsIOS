@@ -8,7 +8,18 @@
 import Foundation
 
 
-struct LoginModel {
-    let nameLabel: String
-    let descriptionLabel: String
+import Foundation
+import UIKit
+
+struct BeatsList: Codable {
+    let fones: [Beat]
 }
+
+struct Beat: Codable {
+    let beatsModel: String
+    let rate: String
+    let reviews: String
+    let image: String
+    let price: String
+}
+

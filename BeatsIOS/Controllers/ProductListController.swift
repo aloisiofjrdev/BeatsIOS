@@ -19,11 +19,14 @@ class ProductListController: UIViewController {
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var doubtButton: UIButton!
     
+    private var fonesListVM: FonesViewModelList?
+    
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        setup()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
         navigationItem.rightBarButtonItem?.tintColor = .white
@@ -61,11 +64,33 @@ class ProductListController: UIViewController {
         
     }
     
+    func setup() {
+        
+        let url = URL(string: "https://74d92505-ba80-4848-b243-f79c813a14c8.mock.pstmn.io")!
+        
+        Webservice().getFones(url: url) { fones in
+            
+            if let fones = fones {
+                self.fonesListVM = FonesViewModelList(fones: fones)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+    }
+    
 }
 
 extension ProductListController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.fonesListVM == nil ? 0 : self.fonesListVM?.numberOfSections as! Int
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return self.fonesListVM?.numberOfRowsInSection(section) ?? 10
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -78,7 +103,15 @@ extension ProductListController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "BeatsCell", for: indexPath) as? BeatsCellTableViewCell {
-            //cell.labelTest.text = "Aloaloalo"
+            
+            let foneVM = self.fonesListVM?.foneAtIndex(indexPath.row)
+            
+            cell.nameFoneLabel.text = foneVM?.beatsModel
+            cell.priceLabel.text = foneVM?.price
+            cell.rateLabel.text = foneVM?.rate
+            cell.reviewsLabel.text = foneVM?.reviews
+            
+            
             return cell
         }
 

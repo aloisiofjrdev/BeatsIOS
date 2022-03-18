@@ -21,6 +21,9 @@ class LoginController: UIViewController {
     @IBOutlet weak var signInLabel: UILabel!
     @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var userErrorLabel: UILabel!
+    @IBOutlet weak var pwErrorLabel: UILabel!
+    
     
     
     //MARK: - Lifecycle
@@ -28,7 +31,79 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        resetFormulario()
         
+    }
+    
+    func resetFormulario() {
+        loginButton.isEnabled = false
+        loginButton.alpha = 0.5
+        userErrorLabel.isHidden = false
+        pwErrorLabel.isHidden = false
+        
+        userErrorLabel.text = ""
+        pwErrorLabel.text = ""
+        
+        userTextField.text = ""
+        pwTextField.text = ""
+    }
+    
+    @IBAction func userTextFieldChange(_ sender: Any) {
+        
+        if let userName = userTextField.text {
+            if let errorMessage = invalidUsername(userName){
+                userErrorLabel.text = errorMessage
+                userErrorLabel.isHidden = false
+                
+            } else{
+                userErrorLabel.isHidden = true
+            }
+            
+        }
+        
+        checkForValideForm()
+    }
+    
+    func invalidUsername(_ value: String) -> String? {
+        let regularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
+        if !predicate.evaluate(with: value) {
+            return "Nome de usúario inválido"
+        }
+        return nil
+    }
+    
+    @IBAction func pwTextFieldChange(_ sender: Any) {
+        
+        if let password = pwTextField.text {
+            if let errorMessage = invalidPw(password){
+                pwErrorLabel.text = errorMessage
+                pwErrorLabel.isHidden = false
+                
+            } else{
+                pwErrorLabel.isHidden = true
+            }
+            
+        }
+        
+        checkForValideForm()
+    }
+    
+    func invalidPw(_ value:String) -> String? {
+        
+        if value.count < 8 {
+            return "Senha precisa conter no mínimo 8 caracteres"
+        }
+        if containsDigit(value) {
+            return "Senha precisa conter no mínimo 1 dígito"
+        }
+        return nil
+    }
+    
+    func containsDigit(_ value: String) -> Bool {
+        let regularExpression = ".*[0-9]+.*"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
+        return !predicate.evaluate(with: value)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,9 +151,14 @@ class LoginController: UIViewController {
         
         
         
-        signInLabel.text = "Ainda não é cadastrado? "
+        signInLabel.text = "Ainda não é cadastrado?    "
         signInLabel.textColor = .white
         signInLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        
+        userErrorLabel.textColor = .red
+        userErrorLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        pwErrorLabel.textColor = .red
+        pwErrorLabel.font = UIFont.boldSystemFont(ofSize: 13)
         
         let greenAttsSB: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor .green, .font: UIFont.boldSystemFont(ofSize: 15)]
         let attibutedTitleSignin = NSMutableAttributedString(string: "Inscreve-se", attributes: greenAttsSB )
@@ -88,10 +168,21 @@ class LoginController: UIViewController {
         
     }
     
+    func checkForValideForm() {
+        if userErrorLabel.isHidden && pwErrorLabel.isHidden {
+            loginButton.isEnabled = true
+            loginButton.alpha = 1
+        } else {
+            loginButton.isEnabled = false
+            loginButton.alpha = 0.5
+        }
+    }
+    
     //MARK: - Actions
     
     @IBAction func entrarButton(_ sender: Any) {
-
+        
+        resetFormulario()
         
     }
 

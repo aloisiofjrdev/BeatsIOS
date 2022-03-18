@@ -23,6 +23,8 @@ class ProductListController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {

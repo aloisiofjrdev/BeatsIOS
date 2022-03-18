@@ -91,7 +91,7 @@ class LoginController: UIViewController {
     //MARK: - Actions
     
     @IBAction func entrarButton(_ sender: Any) {
-        self.navigationController?.pushViewController(ProductListController(), animated: true)
+
         
     }
 

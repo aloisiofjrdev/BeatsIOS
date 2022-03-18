@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uFg-KW-0Lh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a2f-xA-5JB">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login Controller-->
+        <!-- -->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginController" customModule="BeatsIOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,6 +66,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="entrarButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cJN-go-U2o"/>
+                                    <segue destination="uFg-KW-0Lh" kind="show" id="P0G-fD-cLx"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="azc-wH-79q">
@@ -118,7 +119,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="azc-wH-79q" secondAttribute="trailing" constant="62" id="x1o-GX-3zD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hrI-Cx-7SL"/>
+                    <navigationItem key="navigationItem" title=" " id="hrI-Cx-7SL">
+                        <barButtonItem key="backBarButtonItem" id="UZ2-MA-J2Z">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="p1p-Bo-x32" id="Q9R-nD-zbo"/>
                         <outlet property="gradienteImage" destination="hsk-dc-28r" id="0G2-WP-0V8"/>
@@ -144,16 +149,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKc-aQ-j45">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPZ-5G-55U">
                                         <rect key="frame" x="0.0" y="0.0" width="412" height="506"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvo-zo-CRd">
-                                                <rect key="frame" x="0.0" y="0.0" width="412" height="377"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="377"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image 10" translatesAutoresizingMaskIntoConstraints="NO" id="Qg6-Cj-5PG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="377"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="416" height="377"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -171,14 +176,14 @@
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeatsCell" id="J4x-Bj-lr7" customClass="BeatsCellTableViewCell" customModule="BeatsIOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="411" height="53"/>
+                                                        <rect key="frame" x="0.0" y="28" width="411" height="52.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J4x-Bj-lr7" id="9l2-cA-t9U">
-                                                            <rect key="frame" x="0.0" y="0.0" width="411" height="53"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="411" height="52.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rh-uo-XoY">
-                                                                    <rect key="frame" x="16" y="16" width="379" height="21"/>
+                                                                    <rect key="frame" x="16" y="16" width="379" height="20.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -206,7 +211,7 @@
                                         <constraints>
                                             <constraint firstItem="kvo-zo-CRd" firstAttribute="leading" secondItem="HPZ-5G-55U" secondAttribute="leading" id="Cc7-zG-Uy7"/>
                                             <constraint firstItem="ddK-5r-gup" firstAttribute="top" secondItem="kvo-zo-CRd" secondAttribute="bottom" id="E0f-iA-4C1"/>
-                                            <constraint firstAttribute="trailing" secondItem="kvo-zo-CRd" secondAttribute="trailing" id="QQd-Ps-0HO"/>
+                                            <constraint firstAttribute="trailing" secondItem="kvo-zo-CRd" secondAttribute="trailing" constant="-2" id="QQd-Ps-0HO"/>
                                             <constraint firstItem="ddK-5r-gup" firstAttribute="leading" secondItem="HPZ-5G-55U" secondAttribute="leading" constant="1" id="Shd-zy-N6U"/>
                                             <constraint firstItem="kvo-zo-CRd" firstAttribute="top" secondItem="HPZ-5G-55U" secondAttribute="top" id="ZCx-6j-8hG"/>
                                             <constraint firstAttribute="bottom" secondItem="ddK-5r-gup" secondAttribute="bottom" constant="1" id="ozb-yQ-Uoz"/>
@@ -224,7 +229,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dSc-S2-JJm"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.38457617160000002" green="0.0" blue="0.93121159080000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MKc-aQ-j45" firstAttribute="trailing" secondItem="dSc-S2-JJm" secondAttribute="trailing" id="TDK-B1-QfY"/>
                             <constraint firstItem="MKc-aQ-j45" firstAttribute="top" secondItem="dSc-S2-JJm" secondAttribute="top" id="tWL-vf-XUE"/>
@@ -232,9 +237,7 @@
                             <constraint firstItem="MKc-aQ-j45" firstAttribute="leading" secondItem="dSc-S2-JJm" secondAttribute="leading" id="xWw-sr-pbJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nnq-uj-Pm6">
-                        <barButtonItem key="backBarButtonItem" title="Voltar" id="12t-SV-emr"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="nnq-uj-Pm6"/>
                     <connections>
                         <outlet property="tableHeight" destination="JkP-hc-QCp" id="VWx-g2-hx1"/>
                         <outlet property="tableView" destination="ddK-5r-gup" id="OIf-bP-mTs"/>

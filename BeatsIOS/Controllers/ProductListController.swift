@@ -27,17 +27,18 @@ class ProductListController: UIViewController {
         super.viewDidLoad()
         configureUI()
         setup()
+        configureNavigation()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
-        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
         self.tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         self.tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
         self.tableView.removeObserver(self, forKeyPath: "contentSize")
     }
     
@@ -64,6 +65,14 @@ class ProductListController: UIViewController {
         
     }
     
+    func configureNavigation() {
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        navigationItem.backButtonTitle = ""
+        
+    }
+    
     func setup() {
         
         let url = URL(string: "https://74d92505-ba80-4848-b243-f79c813a14c8.mock.pstmn.io")!
@@ -78,6 +87,13 @@ class ProductListController: UIViewController {
                 }
             }
         }
+        
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func logOutButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -114,7 +130,17 @@ extension ProductListController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         }
-
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detalhesFones = self.fonesListVM?.foneAtIndex(indexPath.item)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "DetailsBeatsViewController") as! DetailsBeatsViewController
+        controller.foneSelecionado = detalhesFones
+        navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
 }

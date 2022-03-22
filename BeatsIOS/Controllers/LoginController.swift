@@ -111,15 +111,15 @@ class LoginController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     //MARK: - Helpers
     
     func configureUI() {
         
-        self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.barStyle = .black
+
         
         nameLabel.text = "Meu Beats"
         nameLabel.textColor = .white

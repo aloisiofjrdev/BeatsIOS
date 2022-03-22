@@ -118,6 +118,7 @@ extension ProductListController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "BeatsCell", for: indexPath) as? BeatsCellTableViewCell {
             
             let foneVM = self.fonesListVM?.foneAtIndex(indexPath.row)

@@ -9,12 +9,16 @@ import Foundation
 import UIKit
 
 
-struct Login: Codable {
+struct LoginModel {
+    
     var nomeText: String = "Meus Beats"
-    let subNomeText: String
-    let placeholderUserText: String
-    let placeholderPwText: String
-    let loginButtonText: String
-    let signUpText: String
-    let signUpButtonText: String
+    var subNomeText: String = "Especializados em fones para deejay"
+    var placeholderUserText: String = "Usuário"
+    var placeholderPwText: String = "Senha"
+    var loginButtonText: String = "Entrar"
+    var signUpText: String = "Ainda não é cadastrado?    "
+    var signUpButtonText: String = "Inscreve-se"
+    
 }
+
+

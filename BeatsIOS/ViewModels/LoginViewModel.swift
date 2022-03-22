@@ -7,21 +7,40 @@
 
 import Foundation
 
-struct LoginsViewModel {
-    private let login: Login
-}
 
-extension LoginsViewModel {
-    init(_ login: Login) {
+struct LoginsViewModel {
+    
+    var login: LoginModel
+    
+    init(login: LoginModel) {
         self.login = login
     }
-}
-
-extension LoginsViewModel {
-
+    
     var nomeText: String {
         return self.login.nomeText
     }
-
-
+    
+    var subNomeText: String {
+        return self.login.subNomeText
+    }
+    
+    var placeholderUserText: String {
+        return self.login.placeholderUserText
+    }
+    
+    var placeholderPwText: String {
+        return self.login.placeholderPwText
+    }
+    
+    var loginButtonText: String {
+        return self.login.loginButtonText
+    }
+    
+    var signUpText: String {
+        return self.login.signUpText
+    }
+    
+    var signUpButtonText: String {
+        return self.login.signUpButtonText
+    }
 }

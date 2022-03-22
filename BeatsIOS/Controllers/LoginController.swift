@@ -23,7 +23,7 @@ class LoginController: UIViewController {
     @IBOutlet weak var userErrorLabel: UILabel!
     @IBOutlet weak var pwErrorLabel: UILabel!
     
-    
+    var foneVM: LoginsViewModel = LoginsViewModel(login: LoginModel())
     
     //MARK: - Lifecycle
     
@@ -121,12 +121,12 @@ class LoginController: UIViewController {
         self.navigationController?.navigationBar.barStyle = .black
 
         
-        nameLabel.text = "Meu Beats"
+        nameLabel.text = foneVM.nomeText
         nameLabel.textColor = .white
         nameLabel.font = UIFont.boldSystemFont(ofSize: 50)
         nameLabel.textAlignment = .center
         
-        descriptionLabel.text = "Especializados em fones para deejay"
+        descriptionLabel.text = foneVM.subNomeText
         descriptionLabel.textColor = .white
         descriptionLabel.font = UIFont.boldSystemFont(ofSize: 16)
         descriptionLabel.textAlignment = .center
@@ -135,23 +135,23 @@ class LoginController: UIViewController {
         userTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
         userTextField.keyboardAppearance = .dark
         userTextField.textColor = .white
-        userTextField.attributedPlaceholder = NSAttributedString(string: "Usuário", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        userTextField.attributedPlaceholder = NSAttributedString(string: foneVM.placeholderUserText, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         
         
         pwTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
         pwTextField.keyboardAppearance = .dark
         pwTextField.textColor = .white
-        pwTextField.attributedPlaceholder = NSAttributedString(string: "Senha", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        pwTextField.attributedPlaceholder = NSAttributedString(string: foneVM.placeholderPwText, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         
         loginButton.layer.cornerRadius = 20
         loginButton.tintColor = .white
-        loginButton.setTitle("Entrar", for: .normal)
+        loginButton.setTitle(foneVM.loginButtonText, for: .normal)
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         loginButton.setTitleColor(.white, for: .normal)
         
         
         
-        signInLabel.text = "Ainda não é cadastrado?    "
+        signInLabel.text = foneVM.signUpText
         signInLabel.textColor = .white
         signInLabel.font = UIFont.boldSystemFont(ofSize: 15)
         
@@ -161,7 +161,7 @@ class LoginController: UIViewController {
         pwErrorLabel.font = UIFont.boldSystemFont(ofSize: 13)
         
         let greenAttsSB: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor .green, .font: UIFont.boldSystemFont(ofSize: 15)]
-        let attibutedTitleSignin = NSMutableAttributedString(string: "Inscreve-se", attributes: greenAttsSB )
+        let attibutedTitleSignin = NSMutableAttributedString(string: foneVM.signUpButtonText, attributes: greenAttsSB )
         signInButton.setAttributedTitle(attibutedTitleSignin, for: .normal)
         
 

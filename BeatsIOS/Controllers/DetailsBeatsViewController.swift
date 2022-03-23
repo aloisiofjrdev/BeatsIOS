@@ -13,16 +13,12 @@ class DetailsBeatsViewController: UIViewController {
     
     //MARK: - Properties
     @IBOutlet weak var modelBeatsLabel: UILabel!
-    
     @IBOutlet weak var nomeLabel: UILabel!
     @IBOutlet weak var nomeBeatsLabel: UILabel!
-    
     @IBOutlet weak var notaLabel: UILabel!
     @IBOutlet weak var notaBeatsLabel: UILabel!
-    
     @IBOutlet weak var avaliacaoLabel: UILabel!
     @IBOutlet weak var avaliacaoBeatsLabel: UILabel!
-   
     @IBOutlet weak var precoLabel: UILabel!
     @IBOutlet weak var precoBeatsLabel: UILabel!
     

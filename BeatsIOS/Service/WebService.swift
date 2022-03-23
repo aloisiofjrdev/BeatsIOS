@@ -23,7 +23,7 @@ class Webservice {
                 completion(fonesList.fones)
             }
 
-            print(fonesList?.fones ?? "teste")
+            print(fonesList?.fones ?? "error no decode getFones")
 
         }
 

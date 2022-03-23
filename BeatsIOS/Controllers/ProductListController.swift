@@ -14,7 +14,6 @@ class ProductListController: UIViewController {
     //MARK: - Properties
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var doubtButton: UIButton!

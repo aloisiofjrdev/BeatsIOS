@@ -25,6 +25,8 @@
 		7FBA143B27E506D90066CCE0 /* FonesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA143A27E506D90066CCE0 /* FonesViewModel.swift */; };
 		7FBA144027E8E67A0066CCE0 /* DetailsBeatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA143F27E8E67A0066CCE0 /* DetailsBeatsViewController.swift */; };
 		7FBA144827EA16D70066CCE0 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA144727EA16D70066CCE0 /* LoginModel.swift */; };
+		7FBA144D27EA99350066CCE0 /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA144C27EA99350066CCE0 /* DetailsModel.swift */; };
+		7FBA145227EA99450066CCE0 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA145127EA99450066CCE0 /* DetailsViewModel.swift */; };
 		AE19017CF3A58F4151121CA8 /* Pods_BeatsIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2223D8388FD99775016F9FEB /* Pods_BeatsIOS.framework */; };
 		CDAA47F2D6FA70B00BECB0A1 /* Pods_BeatsIOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E871B4E30DFD307D5592F51 /* Pods_BeatsIOSTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,8 @@
 		7FBA143A27E506D90066CCE0 /* FonesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FonesViewModel.swift; sourceTree = "<group>"; };
 		7FBA143F27E8E67A0066CCE0 /* DetailsBeatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBeatsViewController.swift; sourceTree = "<group>"; };
 		7FBA144727EA16D70066CCE0 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		7FBA144C27EA99350066CCE0 /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
+		7FBA145127EA99450066CCE0 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		9C5A54D19FF07A18072BCF15 /* Pods-BeatsIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeatsIOSTests.release.xcconfig"; path = "Target Support Files/Pods-BeatsIOSTests/Pods-BeatsIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		A769C292ED8D34C0E840ABE5 /* Pods-BeatsIOS-BeatsIOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeatsIOS-BeatsIOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeatsIOS-BeatsIOSUITests/Pods-BeatsIOS-BeatsIOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D60A5024C23E76C9CA26FCDE /* Pods-BeatsIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeatsIOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BeatsIOSTests/Pods-BeatsIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 			children = (
 				7FBA13F727E37E340066CCE0 /* FonesModel.swift */,
 				7FBA144727EA16D70066CCE0 /* LoginModel.swift */,
+				7FBA144C27EA99350066CCE0 /* DetailsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			children = (
 				7FBA13FC27E37E430066CCE0 /* LoginViewModel.swift */,
 				7FBA143A27E506D90066CCE0 /* FonesViewModel.swift */,
+				7FBA145127EA99450066CCE0 /* DetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -474,7 +480,9 @@
 				7FBA144027E8E67A0066CCE0 /* DetailsBeatsViewController.swift in Sources */,
 				7FBA13F327E379890066CCE0 /* LoginController.swift in Sources */,
 				7FBA13BA27E36C810066CCE0 /* AppDelegate.swift in Sources */,
+				7FBA144D27EA99350066CCE0 /* DetailsModel.swift in Sources */,
 				7FBA142227E3F73E0066CCE0 /* ProductListController.swift in Sources */,
+				7FBA145227EA99450066CCE0 /* DetailsViewModel.swift in Sources */,
 				7FBA143B27E506D90066CCE0 /* FonesViewModel.swift in Sources */,
 				7FBA13BC27E36C810066CCE0 /* SceneDelegate.swift in Sources */,
 			);

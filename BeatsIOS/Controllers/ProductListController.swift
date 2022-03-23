@@ -139,7 +139,7 @@ extension ProductListController: UITableViewDelegate, UITableViewDataSource {
         let detalhesFones = self.fonesListVM?.foneAtIndex(indexPath.item)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "DetailsBeatsViewController") as! DetailsBeatsViewController
-        controller.foneSelecionado = detalhesFones
+        controller.foneVM = detalhesFones
         navigationController?.pushViewController(controller, animated: true)
         
     }

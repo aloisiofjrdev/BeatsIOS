@@ -26,7 +26,8 @@ class DetailsBeatsViewController: UIViewController {
     @IBOutlet weak var precoLabel: UILabel!
     @IBOutlet weak var precoBeatsLabel: UILabel!
     
-    var foneSelecionado: FonesViewModel?
+    var foneVM: FonesViewModel?
+    var detailsVM: DetailsViewModel = DetailsViewModel(details: DetailsModel())
     
     //MARK: - LifeCycle
     
@@ -46,20 +47,19 @@ class DetailsBeatsViewController: UIViewController {
         
     }
     
-    
     func setup() {
         
-        nomeLabel.text = "Modelo"
-        notaLabel.text = "Nota"
-        avaliacaoLabel.text = "Avaliações"
-        precoLabel.text = "Preço"
+        nomeLabel.text = detailsVM.nomeText
+        notaLabel.text = detailsVM.notaText
+        avaliacaoLabel.text = detailsVM.avaliacaoText
+        precoLabel.text = detailsVM.precoText
         
-        if let detalhesBeats = foneSelecionado {
-            self.modelBeatsLabel.text = detalhesBeats.beatsModel
-            self.nomeBeatsLabel.text = detalhesBeats.beatsModel
-            self.precoBeatsLabel.text = detalhesBeats.price
-            self.avaliacaoBeatsLabel.text = detalhesBeats.reviews
-            self.notaBeatsLabel.text = detalhesBeats.rate
+        if let foneVM = foneVM {
+            self.modelBeatsLabel.text = foneVM.beatsModel
+            self.nomeBeatsLabel.text = foneVM.beatsModel
+            self.precoBeatsLabel.text = foneVM.price
+            self.avaliacaoBeatsLabel.text = foneVM.reviews
+            self.notaBeatsLabel.text = foneVM.rate
         }
     }
 }

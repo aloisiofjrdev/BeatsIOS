@@ -23,7 +23,7 @@ class LoginController: UIViewController {
     @IBOutlet weak var userErrorLabel: UILabel!
     @IBOutlet weak var pwErrorLabel: UILabel!
     
-    var foneVM: LoginsViewModel = LoginsViewModel(login: LoginModel())
+    var LoginVM: LoginsViewModel = LoginsViewModel()
     
     //MARK: - Lifecycle
     
@@ -42,19 +42,19 @@ class LoginController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    //MARK: - Helpers
+    //MARK: - Methods
     
-    func configureUI() {
+    private func configureUI() {
         
         self.navigationController?.navigationBar.barStyle = .black
 
         
-        nameLabel.text = foneVM.nomeText
+        nameLabel.text = LoginVM.nomeText
         nameLabel.textColor = .white
         nameLabel.font = UIFont.boldSystemFont(ofSize: 50)
         nameLabel.textAlignment = .center
         
-        descriptionLabel.text = foneVM.subNomeText
+        descriptionLabel.text = LoginVM.subNomeText
         descriptionLabel.textColor = .white
         descriptionLabel.font = UIFont.boldSystemFont(ofSize: 16)
         descriptionLabel.textAlignment = .center
@@ -63,23 +63,23 @@ class LoginController: UIViewController {
         userTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
         userTextField.keyboardAppearance = .dark
         userTextField.textColor = .white
-        userTextField.attributedPlaceholder = NSAttributedString(string: foneVM.placeholderUserText, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        userTextField.attributedPlaceholder = NSAttributedString(string: LoginVM.placeholderUserText, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         
         
         pwTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
         pwTextField.keyboardAppearance = .dark
         pwTextField.textColor = .white
-        pwTextField.attributedPlaceholder = NSAttributedString(string: foneVM.placeholderPwText, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        pwTextField.attributedPlaceholder = NSAttributedString(string: LoginVM.placeholderPwText, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         
         loginButton.layer.cornerRadius = 20
         loginButton.tintColor = .white
-        loginButton.setTitle(foneVM.loginButtonText, for: .normal)
+        loginButton.setTitle(LoginVM.loginButtonText, for: .normal)
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         loginButton.setTitleColor(.white, for: .normal)
         
         
         
-        signInLabel.text = foneVM.signUpText
+        signInLabel.text = LoginVM.signUpText
         signInLabel.textColor = .white
         signInLabel.font = UIFont.boldSystemFont(ofSize: 15)
         
@@ -89,11 +89,11 @@ class LoginController: UIViewController {
         pwErrorLabel.font = UIFont.boldSystemFont(ofSize: 13)
         
         let greenAttsSB: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor .green, .font: UIFont.boldSystemFont(ofSize: 15)]
-        let attibutedTitleSignin = NSMutableAttributedString(string: foneVM.signUpButtonText, attributes: greenAttsSB )
+        let attibutedTitleSignin = NSMutableAttributedString(string: LoginVM.signUpButtonText, attributes: greenAttsSB )
         signInButton.setAttributedTitle(attibutedTitleSignin, for: .normal)
     }
     
-    func resetFormulario() {
+    private func resetFormulario() {
         loginButton.isEnabled = false
         loginButton.alpha = 0.5
         userErrorLabel.isHidden = false
@@ -106,33 +106,7 @@ class LoginController: UIViewController {
         pwTextField.text = ""
     }
     
-    func invalidUsername(_ value: String) -> String? {
-        let regularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        if !predicate.evaluate(with: value) {
-            return "Nome de usúario inválido"
-        }
-        return nil
-    }
-    
-    func invalidPw(_ value:String) -> String? {
-        
-        if value.count < 8 {
-            return "Senha precisa conter no mínimo 8 caracteres"
-        }
-        if containsDigit(value) {
-            return "Senha precisa conter no mínimo 1 dígito"
-        }
-        return nil
-    }
-    
-    func containsDigit(_ value: String) -> Bool {
-        let regularExpression = ".*[0-9]+.*"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        return !predicate.evaluate(with: value)
-    }
-    
-    func checkForValideForm() {
+    private func checkForValideForm() {
         if userErrorLabel.isHidden && pwErrorLabel.isHidden {
             loginButton.isEnabled = true
             loginButton.alpha = 1
@@ -152,7 +126,7 @@ class LoginController: UIViewController {
     @IBAction func userTextFieldChange(_ sender: Any) {
         
         if let userName = userTextField.text {
-            if let errorMessage = invalidUsername(userName){
+            if let errorMessage = LoginVM.invalidUsername(userName){
                 userErrorLabel.text = errorMessage
                 userErrorLabel.isHidden = false
                 
@@ -169,7 +143,7 @@ class LoginController: UIViewController {
     @IBAction func pwTextFieldChange(_ sender: Any) {
         
         if let password = pwTextField.text {
-            if let errorMessage = invalidPw(password){
+            if let errorMessage = LoginVM.invalidPw(password){
                 pwErrorLabel.text = errorMessage
                 pwErrorLabel.isHidden = false
                 

@@ -23,7 +23,7 @@ class DetailsBeatsViewController: UIViewController {
     @IBOutlet weak var precoBeatsLabel: UILabel!
     
     var foneVM: FonesViewModel?
-    var detailsVM: DetailsViewModel = DetailsViewModel(details: DetailsModel())
+    var detailsVM: DetailsViewModel = DetailsViewModel()
     
     //MARK: - LifeCycle
     

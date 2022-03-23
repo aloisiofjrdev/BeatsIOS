@@ -10,11 +10,7 @@ import Foundation
 
 struct LoginsViewModel {
     
-    var login: LoginModel
-    
-    init(login: LoginModel) {
-        self.login = login
-    }
+    private var login: LoginModel = LoginModel()
     
     var nomeText: String {
         return self.login.nomeText
@@ -43,4 +39,32 @@ struct LoginsViewModel {
     var signUpButtonText: String {
         return self.login.signUpButtonText
     }
+    
+    func invalidUsername(_ value: String) -> String? {
+        let regularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
+        if !predicate.evaluate(with: value) {
+            return "Nome de usúario inválido"
+        }
+        return nil
+    }
+    
+    func invalidPw(_ value:String) -> String? {
+        
+        if value.count < 8 {
+            return "Senha precisa conter no mínimo 8 caracteres"
+        }
+        if containsDigit(value) {
+            return "Senha precisa conter no mínimo 1 dígito"
+        }
+        return nil
+    }
+    
+    func containsDigit(_ value: String) -> Bool {
+        let regularExpression = ".*[0-9]+.*"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
+        return !predicate.evaluate(with: value)
+    }
+    
+    
 }

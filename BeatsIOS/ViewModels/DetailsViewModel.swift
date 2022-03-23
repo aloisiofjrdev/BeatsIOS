@@ -9,11 +9,7 @@ import Foundation
 
 struct DetailsViewModel {
     
-    var details: DetailsModel
-    
-    init(details: DetailsModel) {
-        self.details = details
-    }
+    private var details: DetailsModel = DetailsModel()
     
     var nomeText: String {
         return self.details.nomeText

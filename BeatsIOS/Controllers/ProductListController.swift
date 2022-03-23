@@ -52,9 +52,9 @@ class ProductListController: UIViewController {
         }
     }
     
-    //MARK: - Helpers
+    //MARK: - Methods
     
-    func configureUI() {
+    private func configureUI() {
         
         logOutButton.layer.cornerRadius = 20
         logOutButton.tintColor = .white
@@ -64,7 +64,7 @@ class ProductListController: UIViewController {
         
     }
     
-    func configureNavigation() {
+    private func configureNavigation() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
         navigationItem.rightBarButtonItem?.tintColor = .white
@@ -72,7 +72,7 @@ class ProductListController: UIViewController {
         
     }
     
-    func setup() {
+    private func setup() {
         
         let url = URL(string: "https://74d92505-ba80-4848-b243-f79c813a14c8.mock.pstmn.io")!
         

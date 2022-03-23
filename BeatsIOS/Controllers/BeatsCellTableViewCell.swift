@@ -32,7 +32,7 @@ class BeatsCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureUI() {
+    private func configureUI() {
         beatImage.layer.cornerRadius = 10
     }
 

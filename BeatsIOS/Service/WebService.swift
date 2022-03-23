@@ -8,7 +8,10 @@ import Foundation
 
 class Webservice {
     
+    var errorString: String = "Error no decode getFones"
+    
     func getFones(url: URL, completion: @escaping ([Beat]?) -> ()) {
+        
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
@@ -23,7 +26,7 @@ class Webservice {
                 completion(fonesList.fones)
             }
 
-            print(fonesList?.fones ?? "error no decode getFones")
+                print(fonesList?.fones ?? self.errorString)
 
         }
 

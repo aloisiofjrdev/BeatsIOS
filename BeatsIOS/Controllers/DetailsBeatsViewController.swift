@@ -21,6 +21,7 @@ class DetailsBeatsViewController: UIViewController {
     @IBOutlet weak var avaliacaoBeatsLabel: UILabel!
     @IBOutlet weak var precoLabel: UILabel!
     @IBOutlet weak var precoBeatsLabel: UILabel!
+    @IBOutlet weak var buyButton: UIButton!
     
     var foneVM: FonesViewModel?
     var detailsVM: DetailsViewModel = DetailsViewModel()
@@ -44,6 +45,13 @@ class DetailsBeatsViewController: UIViewController {
     }
     
     func setup() {
+        
+        
+        buyButton.layer.cornerRadius = 20
+        buyButton.tintColor = .white
+        buyButton.setTitle(detailsVM.buyButtonText, for: .normal)
+        buyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        buyButton.setTitleColor(.white, for: .normal)
         
         nomeLabel.text = detailsVM.nomeText
         notaLabel.text = detailsVM.notaText

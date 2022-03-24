@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import UIKit
-
 
 struct LoginModel {
     
@@ -17,7 +15,7 @@ struct LoginModel {
     var placeholderPwText: String = "Senha"
     var loginButtonText: String = "Entrar"
     var signUpText: String = "Ainda não é cadastrado?    "
-    var signUpButtonText: String = "Inscreve-se"
+    var signUpButtonText: String = "Inscreva-se"
     
 }
 

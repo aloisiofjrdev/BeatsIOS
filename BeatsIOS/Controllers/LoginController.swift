@@ -23,7 +23,8 @@ class LoginController: UIViewController {
     @IBOutlet weak var userErrorLabel: UILabel!
     @IBOutlet weak var pwErrorLabel: UILabel!
     
-    var LoginVM: LoginsViewModel = LoginsViewModel()
+    private let LoginVM: LoginsViewModel = LoginsViewModel()
+    private let registerVC = RegisterViewController()
     
     //MARK: - Lifecycle
     
@@ -36,10 +37,8 @@ class LoginController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+        checkIsLoggedIn()
+        
     }
     
     //MARK: - Methods
@@ -107,7 +106,7 @@ class LoginController: UIViewController {
     }
     
     private func checkForValideForm() {
-        if userErrorLabel.isHidden && pwErrorLabel.isHidden {
+        if !userTextField.text!.isEmpty && !pwTextField.text!.isEmpty {
             loginButton.isEnabled = true
             loginButton.alpha = 1
         } else {
@@ -116,43 +115,56 @@ class LoginController: UIViewController {
         }
     }
     
+    private func checkIsLoggedIn() {
+        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        
+        if isUserLoggedIn {
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+        }
+    }
+    
+    private func displayMyAlertMessage(userMessage: String) {
+        
+        let myAlert = UIAlertController(title: "Alerta", message: userMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        
+        myAlert.addAction(okAction)
+        self.present(myAlert, animated: true, completion: nil)
+        
+    }
+    
 
     //MARK: - Actions
     
     @IBAction func entrarButton(_ sender: Any) {
-        resetFormulario()
+        
+        guard let userEmail = userTextField.text else { return }
+        guard let userPw = pwTextField.text else { return }
+        
+        let userDefautlsEmailStored = UserDefaults.standard.string(forKey: "userEmail")
+        let userDefautlsPwStored = UserDefaults.standard.string(forKey: "userPw")
+        
+        if userDefautlsEmailStored == userEmail {
+            if userDefautlsPwStored == userPw {
+                //Login is sucessful
+                UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                resetFormulario()
+            }else{
+                displayMyAlertMessage(userMessage: "Senha inválida")
+                return
+            }
+        }else{
+            displayMyAlertMessage(userMessage: "E-mail inválido")
+        }
+        
     }
     
     @IBAction func userTextFieldChange(_ sender: Any) {
-        
-        if let userName = userTextField.text {
-            if let errorMessage = LoginVM.invalidUsername(userName){
-                userErrorLabel.text = errorMessage
-                userErrorLabel.isHidden = false
-                
-            } else{
-                userErrorLabel.isHidden = true
-            }
-            
-        }
-        
         checkForValideForm()
     }
     
     
     @IBAction func pwTextFieldChange(_ sender: Any) {
-        
-        if let password = pwTextField.text {
-            if let errorMessage = LoginVM.invalidPw(password){
-                pwErrorLabel.text = errorMessage
-                pwErrorLabel.isHidden = false
-                
-            } else{
-                pwErrorLabel.isHidden = true
-            }
-            
-        }
-        
         checkForValideForm()
     }
 

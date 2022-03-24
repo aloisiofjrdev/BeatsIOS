@@ -27,6 +27,9 @@
 		7FBA144827EA16D70066CCE0 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA144727EA16D70066CCE0 /* LoginModel.swift */; };
 		7FBA144D27EA99350066CCE0 /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA144C27EA99350066CCE0 /* DetailsModel.swift */; };
 		7FBA145227EA99450066CCE0 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA145127EA99450066CCE0 /* DetailsViewModel.swift */; };
+		7FBA145B27ECD85B0066CCE0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA145A27ECD85B0066CCE0 /* RegisterViewController.swift */; };
+		7FBA146027ECE5820066CCE0 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA145F27ECE5820066CCE0 /* RegisterModel.swift */; };
+		7FBA146527ECE58F0066CCE0 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA146427ECE58F0066CCE0 /* RegisterViewModel.swift */; };
 		AE19017CF3A58F4151121CA8 /* Pods_BeatsIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2223D8388FD99775016F9FEB /* Pods_BeatsIOS.framework */; };
 		CDAA47F2D6FA70B00BECB0A1 /* Pods_BeatsIOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E871B4E30DFD307D5592F51 /* Pods_BeatsIOSTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +81,9 @@
 		7FBA144727EA16D70066CCE0 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		7FBA144C27EA99350066CCE0 /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 		7FBA145127EA99450066CCE0 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		7FBA145A27ECD85B0066CCE0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		7FBA145F27ECE5820066CCE0 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
+		7FBA146427ECE58F0066CCE0 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		9C5A54D19FF07A18072BCF15 /* Pods-BeatsIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeatsIOSTests.release.xcconfig"; path = "Target Support Files/Pods-BeatsIOSTests/Pods-BeatsIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		A769C292ED8D34C0E840ABE5 /* Pods-BeatsIOS-BeatsIOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeatsIOS-BeatsIOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeatsIOS-BeatsIOSUITests/Pods-BeatsIOS-BeatsIOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D60A5024C23E76C9CA26FCDE /* Pods-BeatsIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeatsIOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BeatsIOSTests/Pods-BeatsIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 				7FBA13F727E37E340066CCE0 /* FonesModel.swift */,
 				7FBA144727EA16D70066CCE0 /* LoginModel.swift */,
 				7FBA144C27EA99350066CCE0 /* DetailsModel.swift */,
+				7FBA145F27ECE5820066CCE0 /* RegisterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,6 +204,7 @@
 				7FBA13FC27E37E430066CCE0 /* LoginViewModel.swift */,
 				7FBA143A27E506D90066CCE0 /* FonesViewModel.swift */,
 				7FBA145127EA99450066CCE0 /* DetailsViewModel.swift */,
+				7FBA146427ECE58F0066CCE0 /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -208,6 +216,7 @@
 				7FBA142127E3F73E0066CCE0 /* ProductListController.swift */,
 				7FBA142627E41FBD0066CCE0 /* BeatsCellTableViewCell.swift */,
 				7FBA143F27E8E67A0066CCE0 /* DetailsBeatsViewController.swift */,
+				7FBA145A27ECD85B0066CCE0 /* RegisterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -475,9 +484,12 @@
 				7FBA144827EA16D70066CCE0 /* LoginModel.swift in Sources */,
 				7FBA13F827E37E340066CCE0 /* FonesModel.swift in Sources */,
 				7FBA142727E41FBD0066CCE0 /* BeatsCellTableViewCell.swift in Sources */,
+				7FBA146027ECE5820066CCE0 /* RegisterModel.swift in Sources */,
 				7FBA13BE27E36C810066CCE0 /* ViewController.swift in Sources */,
 				7FBA13FD27E37E430066CCE0 /* LoginViewModel.swift in Sources */,
+				7FBA145B27ECD85B0066CCE0 /* RegisterViewController.swift in Sources */,
 				7FBA144027E8E67A0066CCE0 /* DetailsBeatsViewController.swift in Sources */,
+				7FBA146527ECE58F0066CCE0 /* RegisterViewModel.swift in Sources */,
 				7FBA13F327E379890066CCE0 /* LoginController.swift in Sources */,
 				7FBA13BA27E36C810066CCE0 /* AppDelegate.swift in Sources */,
 				7FBA144D27EA99350066CCE0 /* DetailsModel.swift in Sources */,

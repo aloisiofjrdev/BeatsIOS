@@ -26,4 +26,8 @@ struct DetailsViewModel {
     var precoText: String {
         return self.details.precoText
     }
+    
+    var buyButtonText: String {
+        return self.details.buyButtonText
+    }
 }

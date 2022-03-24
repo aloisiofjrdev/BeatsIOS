@@ -1,0 +1,222 @@
+//
+//  RegisterViewController.swift
+//  BeatsIOS
+//
+//  Created by Aloisio Formento Junior on 24/03/22.
+//
+
+import Foundation
+import UIKit
+
+
+class RegisterViewController: UIViewController {
+    
+    //MARK: - Properties
+    @IBOutlet weak var nomeLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var pwTextField: UITextField!
+    @IBOutlet weak var pwRepeatTextField: UITextField!
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var userErrorLabel: UILabel!
+    @IBOutlet weak var pwErrorLabel: UILabel!
+    @IBOutlet weak var pwRepeatErrorLabel: UILabel!
+    @IBOutlet weak var alreadyRegisterLabel: UILabel!
+    @IBOutlet weak var alreadyRegisterButtonLabel: UIButton!
+    
+    private let registerVM: RegisterViewModel = RegisterViewModel()
+    
+    //MARK: - LifeCycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+        resetFormulario()
+    }
+    
+    
+    //MARK: - Methods
+    
+    private func configureUI() {
+        
+        self.navigationController?.navigationBar.barStyle = .black
+        
+        nomeLabel.text = "Meus Beats"
+        nomeLabel.textColor = .white
+        nomeLabel.font = UIFont.boldSystemFont(ofSize: 50)
+        nomeLabel.textAlignment = .center
+        
+        descriptionLabel.text = "Especializados em fones para deejay"
+        descriptionLabel.textColor = .white
+        descriptionLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        descriptionLabel.textAlignment = .center
+        
+        
+        userTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
+        userTextField.keyboardAppearance = .dark
+        userTextField.textColor = .white
+        userTextField.attributedPlaceholder = NSAttributedString(string: "Usuário", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        
+        
+        pwTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
+        pwTextField.keyboardAppearance = .dark
+        pwTextField.textColor = .white
+        pwTextField.attributedPlaceholder = NSAttributedString(string: "Senha", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        
+        
+        pwRepeatTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
+        pwRepeatTextField.keyboardAppearance = .dark
+        pwRepeatTextField.textColor = .white
+        pwRepeatTextField.attributedPlaceholder = NSAttributedString(string: "Repetir senha", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        
+        buyButton.layer.cornerRadius = 20
+        buyButton.tintColor = .white
+        buyButton.setTitle("Cadastrar", for: .normal)
+        buyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        buyButton.setTitleColor(.white, for: .normal)
+        
+        
+        
+        alreadyRegisterLabel.text = "Já é cadastrado?    "
+        alreadyRegisterLabel.textColor = .white
+        alreadyRegisterLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        
+        userErrorLabel.textColor = .red
+        userErrorLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        pwErrorLabel.textColor = .red
+        pwErrorLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        pwRepeatErrorLabel.textColor = .red
+        pwRepeatErrorLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        
+        
+        let greenAttsSB: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor .green, .font: UIFont.boldSystemFont(ofSize: 15)]
+        let attibutedTitleSignin = NSMutableAttributedString(string: "Entre aqui", attributes: greenAttsSB )
+        alreadyRegisterButtonLabel.setAttributedTitle(attibutedTitleSignin, for: .normal)
+        
+    }
+    
+    private func resetFormulario() {
+        buyButton.isEnabled = false
+        buyButton.alpha = 0.5
+        userErrorLabel.isHidden = false
+        pwErrorLabel.isHidden = false
+        
+        userErrorLabel.text = ""
+        pwErrorLabel.text = ""
+        pwRepeatErrorLabel.text = ""
+        
+        userTextField.text = ""
+        pwTextField.text = ""
+        pwRepeatTextField.text = ""
+    }
+    
+    private func checkForValideForm() {
+        if userErrorLabel.isHidden && pwErrorLabel.isHidden && pwRepeatErrorLabel.isHidden {
+            buyButton.isEnabled = true
+            buyButton.alpha = 1
+        } else {
+            buyButton.isEnabled = false
+            buyButton.alpha = 0.5
+        }
+    }
+    
+    private func displayMyAlertMessage(userMessage: String) {
+        
+        let myAlert = UIAlertController(title: "Alerta", message: userMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        
+        myAlert.addAction(okAction)
+        self.present(myAlert, animated: true, completion: nil)
+        
+        
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func userTextFieldChanged(_ sender: Any) {
+        
+        if let userName = userTextField.text {
+            if let errorMessage = registerVM.invalidUsername(userName){
+                userErrorLabel.text = errorMessage
+                userErrorLabel.isHidden = false
+                
+            } else{
+                userErrorLabel.isHidden = true
+            }
+            
+        }
+        
+        checkForValideForm()
+        
+    }
+    
+    @IBAction func pwTextFieldChanged(_ sender: Any) {
+        
+        if let password = pwTextField.text {
+            if let errorMessage = registerVM.invalidPw(password){
+                pwErrorLabel.text = errorMessage
+                pwErrorLabel.isHidden = false
+                
+            } else{
+                pwErrorLabel.isHidden = true
+            }
+            
+        }
+        
+        checkForValideForm()
+    }
+    
+    @IBAction func pwRepeatTextFieldChanged(_ sender: Any) {
+        
+        if let password = pwRepeatTextField.text {
+            if let errorMessage = registerVM.invalidPw(password){
+                pwRepeatErrorLabel.text = errorMessage
+                pwRepeatErrorLabel.isHidden = false
+                
+            } else{
+                pwRepeatErrorLabel.isHidden = true
+            }
+            
+        }
+        
+        checkForValideForm()
+    }
+    
+    @IBAction func registerButtonAction(_ sender: Any) {
+        
+        guard let userEmail = userTextField.text else { return }
+        guard let userPw = pwTextField.text else { return }
+        guard let userPwRepeat = pwRepeatTextField.text else { return }
+        
+        if userPw != userPwRepeat {
+            
+            displayMyAlertMessage(userMessage: "As senha não são iguais")
+            return
+        }
+        
+        UserDefaults.standard.set(userEmail, forKey: "userEmail")
+        UserDefaults.standard.set(userPw, forKey: "userPw")
+    
+        
+        let myAlert = UIAlertController(title: "Alerta", message: "Cadastro feito com sucesso!", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        myAlert.addAction(okAction)
+        self.present(myAlert, animated: true, completion: nil)
+        
+        
+        resetFormulario()
+        
+    }
+    
+    @IBAction func alreadyRegisterButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+        
+}
+    
+    

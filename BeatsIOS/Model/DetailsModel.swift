@@ -13,5 +13,6 @@ struct DetailsModel {
     var notaText: String = "Nota"
     var avaliacaoText: String = "Avaliações"
     var precoText: String = "Preço"
+    var buyButtonText: String = "Comprar"
     
 }

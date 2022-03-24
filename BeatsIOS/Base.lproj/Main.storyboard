@@ -217,7 +217,7 @@
                                     <constraint firstAttribute="height" constant="50" id="kIK-Ee-uEQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="pwTextFieldChanged:" destination="xkx-no-Xld" eventType="editingChanged" id="TNN-a0-zjx"/>
                                 </connections>
@@ -228,7 +228,7 @@
                                     <constraint firstAttribute="height" constant="50" id="DgS-17-Cx9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="pwRepeatTextFieldChanged:" destination="xkx-no-Xld" eventType="editingChanged" id="5y8-h0-vqX"/>
                                 </connections>

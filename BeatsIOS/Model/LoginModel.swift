@@ -14,7 +14,7 @@ struct LoginModel {
     var placeholderUserText: String = "Usuário"
     var placeholderPwText: String = "Senha"
     var loginButtonText: String = "Entrar"
-    var signUpText: String = "Ainda não é cadastrado?    "
+    var signUpText: String = "Ainda não é cadastrado?"
     var signUpButtonText: String = "Inscreva-se"
     
 }

@@ -70,5 +70,4 @@ struct RegisterViewModel {
         return !predicate.evaluate(with: value)
     }
     
-    
 }

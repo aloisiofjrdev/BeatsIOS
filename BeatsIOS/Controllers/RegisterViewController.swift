@@ -34,7 +34,6 @@ class RegisterViewController: UIViewController {
         resetFormulario()
     }
     
-    
     //MARK: - Methods
     
     private func configureUI() {

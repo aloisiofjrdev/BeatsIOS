@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 protocol NetworkSession {
     func executeRequest(with url: URL, onComplete: @escaping(Data?, URLResponse?, Error?) -> Void)
 }

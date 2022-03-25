@@ -134,15 +134,18 @@ class RegisterViewController: UIViewController {
     
     @IBAction func userTextFieldChanged(_ sender: Any) {
         
-        if let userName = userTextField.text {
-            if let errorMessage = registerVM.invalidUsername(userName){
+        guard let userName = userTextField.text else { return }
+        
+        if userName.isEmpty {
+            userErrorLabel.text = ""
+        } else {
+            if let errorMessage = registerVM.invalidUsername(userName) {
                 userErrorLabel.text = errorMessage
                 userErrorLabel.isHidden = false
                 
             } else{
                 userErrorLabel.isHidden = true
             }
-            
         }
         
         checkForValideForm()
@@ -151,15 +154,18 @@ class RegisterViewController: UIViewController {
     
     @IBAction func pwTextFieldChanged(_ sender: Any) {
         
-        if let password = pwTextField.text {
-            if let errorMessage = registerVM.invalidPw(password){
+        guard let password = pwTextField.text else { return }
+        
+        if password.isEmpty {
+            pwErrorLabel.text = ""
+        } else {
+            if let errorMessage = registerVM.invalidPw(password) {
                 pwErrorLabel.text = errorMessage
                 pwErrorLabel.isHidden = false
                 
             } else{
                 pwErrorLabel.isHidden = true
             }
-            
         }
         
         checkForValideForm()
@@ -167,8 +173,12 @@ class RegisterViewController: UIViewController {
     
     @IBAction func pwRepeatTextFieldChanged(_ sender: Any) {
         
-        if let password = pwRepeatTextField.text {
-            if let errorMessage = registerVM.invalidPw(password){
+        guard let passwordRp = pwRepeatTextField.text else { return }
+        
+        if passwordRp.isEmpty {
+            pwRepeatErrorLabel.text = ""
+        } else {
+            if let errorMessage = registerVM.invalidPw(passwordRp) {
                 pwRepeatErrorLabel.text = errorMessage
                 pwRepeatErrorLabel.isHidden = false
                 

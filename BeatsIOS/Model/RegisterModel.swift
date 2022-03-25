@@ -16,6 +16,6 @@ struct RegisterModel {
     var placeholderPwRepeatText: String = "Repetir senha"
     var registerButtonText: String = "Cadastrar"
     var alreadyRegisterLabelText: String = "Já é cadastrado?"
-    var alreadyRegisterButtonText: String = "Entre aqui"
+    var alreadyRegisterButtonText: String = "Faça login"
     
 }

@@ -18,7 +18,10 @@ class ProductListController: UIViewController {
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var doubtButton: UIButton!
     
-    private var fonesListVM: FonesViewModelList?
+//    private var fonesListVM: FonesViewModelList?
+    private lazy var fonesViewModel = FonesViewModel(delegate: self)
+    
+    
     
     //MARK: - LifeCycle
     
@@ -27,6 +30,7 @@ class ProductListController: UIViewController {
         configureUI()
         setup()
         configureNavigation()
+        fonesViewModel.loadFones()
         
     }
     
@@ -73,21 +77,21 @@ class ProductListController: UIViewController {
     }
     
     private func setup() {
-        
-        let url = URL(string: "https://74d92505-ba80-4848-b243-f79c813a14c8.mock.pstmn.io")!
-        
-        Webservice().getFones(url: url) { fones in
-            
-            if let fones = fones {
-                self.fonesListVM = FonesViewModelList(fones: fones)
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+       
         }
         
-    }
+//        let url = URL(string: "https://74d92505-ba80-4848-b243-f79c813a14c8.mock.pstmn.io")!
+//
+//        WebService().getFones(url: url) { fones in
+//
+//            if let fones = fones {
+//                self.fonesListVM = FonesViewModelList(fones: fones)
+//
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
     
     private func setLogOutUserDefaults() {
         UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
@@ -107,12 +111,8 @@ class ProductListController: UIViewController {
 
 extension ProductListController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.fonesListVM == nil ? 0 : self.fonesListVM?.numberOfSections as! Int
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.fonesListVM?.numberOfRowsInSection(section) ?? 10
+        return fonesViewModel.fones.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -127,12 +127,14 @@ extension ProductListController: UITableViewDelegate, UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "BeatsCell", for: indexPath) as? BeatsCellTableViewCell {
             
-            let foneVM = self.fonesListVM?.foneAtIndex(indexPath.row)
+            cell.fone = fonesViewModel.fones[indexPath.row]
             
-            cell.nameFoneLabel.text = foneVM?.beatsModel
-            cell.priceLabel.text = foneVM?.price
-            cell.rateLabel.text = foneVM?.rate
-            cell.reviewsLabel.text = foneVM?.reviews
+//            let foneVM = self.fonesListVM?.foneAtIndex(indexPath.row)
+//
+//            cell.nameFoneLabel.text = foneVM?.beatsModel
+//            cell.priceLabel.text = foneVM?.price
+//            cell.rateLabel.text = foneVM?.rate
+//            cell.reviewsLabel.text = foneVM?.reviews
             
             
             return cell
@@ -142,12 +144,29 @@ extension ProductListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detalhesFones = self.fonesListVM?.foneAtIndex(indexPath.item)
+        let detalhesFones = self.fonesViewModel.fones[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "DetailsBeatsViewController") as! DetailsBeatsViewController
-        controller.foneVM = detalhesFones
+        controller.setupContent()
+        controller.foneVM?.fone = detalhesFones
         navigationController?.pushViewController(controller, animated: true)
         
     }
+    
+}
+
+extension ProductListController: FonesViewModelDelegate {
+    func onLoadFones() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func onError(error: Error) {
+        DispatchQueue.main.async {
+            self.displayMyAlertMessage(title: "Ops, ocorreu um erro", message: error.localizedDescription, buttonTitle: "Ok")
+        }
+    }
+    
     
 }

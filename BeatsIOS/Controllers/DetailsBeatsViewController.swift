@@ -31,8 +31,9 @@ class DetailsBeatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         configureNavigation()
+        setup()
+        setupContent()
     }
     
     
@@ -45,7 +46,7 @@ class DetailsBeatsViewController: UIViewController {
         
     }
     
-    private func setup() {
+    func setup() {
         
         
         buyButton.layer.cornerRadius = 20
@@ -59,12 +60,22 @@ class DetailsBeatsViewController: UIViewController {
         avaliacaoLabel.text = detailsVM.avaliacaoText
         precoLabel.text = detailsVM.precoText
         
+//        if let foneVM = foneVM {
+//            self.modelBeatsLabel.text = foneVM.fone?.beatsModel
+//            self.nomeBeatsLabel.text = foneVM.fone?.beatsModel
+//            self.precoBeatsLabel.text = foneVM.fone?.price
+//            self.avaliacaoBeatsLabel.text = foneVM.fone?.reviews
+//            self.notaBeatsLabel.text = foneVM.fone?.rate
+//        }
+    }
+    
+    func setupContent() {
         if let foneVM = foneVM {
-            self.modelBeatsLabel.text = foneVM.beatsModel
-            self.nomeBeatsLabel.text = foneVM.beatsModel
-            self.precoBeatsLabel.text = foneVM.price
-            self.avaliacaoBeatsLabel.text = foneVM.reviews
-            self.notaBeatsLabel.text = foneVM.rate
+            self.modelBeatsLabel.text = foneVM.fone?.beatsModel
+            self.nomeBeatsLabel.text = foneVM.fone?.beatsModel
+            self.precoBeatsLabel.text = foneVM.fone?.price
+            self.avaliacaoBeatsLabel.text = foneVM.fone?.reviews
+            self.notaBeatsLabel.text = foneVM.fone?.rate
         }
     }
 }

@@ -6,33 +6,70 @@
 //
 import Foundation
 
-class Webservice {
+protocol WebServiceProtocol {
+    func getFones(completion: @escaping (Result<[FonesModel], NetworkErrors>) -> Void)
+}
+
+class WebService: WebServiceProtocol {
     
-    var errorString: String = "Error no decode getFones"
+    private let session: NetworkSession
+    private let decoder: JSONDecoder
     
-    func getFones(url: URL, completion: @escaping ([Beat]?) -> ()) {
-        
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            if let error = error {
-                print(error.localizedDescription)
-                completion(nil)
-            } else if let data = data {
-
-            let fonesList = try? JSONDecoder().decode(FonesModel.self, from: data)
-
-            if let fonesList = fonesList {
-                completion(fonesList.fones)
-            }
-
-                print(fonesList?.fones ?? self.errorString)
-
-        }
-
-    }.resume()
-
-        
+    init(urlSession: NetworkSession = URLSession.shared, decoder: JSONDecoder = JSONDecoder()) {
+        self.session = urlSession
+        self.decoder = decoder
     }
     
+//    var errorString: String = "Error no decode getFones"
+    
+    func getFones(completion: @escaping (Result<[FonesModel], NetworkErrors>) -> Void) {
+        guard let url = URL(string: "https://42edf8f6-0a48-4351-a67a-7d0f30a8cb68.mock.pstmn.io/") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        session.executeRequest(with: url) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+            guard let jsonData = data else {
+                completion(.failure(.emptyResponse))
+                return
+            }
+            
+            do {
+                let decoded = try self.decoder.decode([FonesModel].self, from: jsonData)
+                completion(.success(decoded))
+            } catch let error {
+                completion(.failure(.jsonDecoding(message: error.localizedDescription)))
+            }
+        }
+    }
 }
+    
+    
+    
+    
+//    func getFones(url: URL, completion: @escaping ([Beat]?) -> ()) {
+//
+//
+//        URLSession.shared.dataTask(with: url) { data, response, error in
+//
+//            if let error = error {
+//                print(error.localizedDescription)
+//                completion(nil)
+//            } else if let data = data {
+//
+//            let fonesList = try? JSONDecoder().decode(FonesModel.self, from: data)
+//
+//            if let fonesList = fonesList {
+//                completion(fonesList.fones)
+//            }
+//
+//                print(fonesList?.fones ?? self.errorString)
+//
+//        }
+//
+//    }.resume()
+//
+//
+//    }
+    

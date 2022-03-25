@@ -8,11 +8,13 @@
 import Foundation
 import UIKit
 
-struct FonesModel: Codable {
-    let fones: [Beat]
-}
+//Model antiga
 
-struct Beat: Codable {
+//struct FonesModel: Codable {
+//    let fones: [Beat]
+//}
+
+struct FonesModel: Decodable {
     let beatsModel: String
     let rate: String
     let reviews: String

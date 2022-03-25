@@ -24,4 +24,12 @@ extension UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil )
     }
+    
+    func callViewController() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "DetailsBeatsViewController") as! DetailsBeatsViewController
+        navigationController?.pushViewController(controller, animated: true)
+        
+    }
 }

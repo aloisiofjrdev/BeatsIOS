@@ -18,17 +18,17 @@ class BeatsCellTableViewCell: UITableViewCell {
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var reviewsLabel: UILabel!
     
-    //MARK: - LifeCycle
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    //MARK: - Methods
+    
+    var fone: FonesModel? {
+        didSet {
+            guard let fone = fone else { return }
+            nameFoneLabel.text = fone.beatsModel
+            rateLabel.text = "⭐ \(fone.rate)"
+            reviewsLabel.text = fone.reviews
+            priceLabel.text = fone.price
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

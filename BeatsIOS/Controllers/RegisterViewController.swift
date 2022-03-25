@@ -140,7 +140,7 @@ class RegisterViewController: UIViewController {
         if userName.isEmpty {
             userErrorLabel.text = ""
         } else {
-            if let errorMessage = registerVM.invalidUsername(userName) {
+            if let errorMessage = invalidUsername(userName) {
                 userErrorLabel.text = errorMessage
                 userErrorLabel.isHidden = false
                 
@@ -160,7 +160,7 @@ class RegisterViewController: UIViewController {
         if password.isEmpty {
             pwErrorLabel.text = ""
         } else {
-            if let errorMessage = registerVM.invalidPw(password) {
+            if let errorMessage = invalidPw(password) {
                 pwErrorLabel.text = errorMessage
                 pwErrorLabel.isHidden = false
                 
@@ -179,7 +179,7 @@ class RegisterViewController: UIViewController {
         if passwordRp.isEmpty {
             pwRepeatErrorLabel.text = ""
         } else {
-            if let errorMessage = registerVM.invalidPw(passwordRp) {
+            if let errorMessage = invalidPw(passwordRp) {
                 pwRepeatErrorLabel.text = errorMessage
                 pwRepeatErrorLabel.isHidden = false
                 
@@ -227,6 +227,39 @@ class RegisterViewController: UIViewController {
         
     }
         
+}
+
+    // MARK: - RegisterViewModelDelegate
+
+extension RegisterViewController: RegisterViewModelDelegate {
+    
+    func invalidUsername(_ value: String) -> String? {
+        let regularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
+        if !predicate.evaluate(with: value) {
+            return "Nome de usúario inválido"
+        }
+        return nil
+    }
+    
+    func invalidPw(_ value:String) -> String? {
+        
+        if value.count < 8 {
+            return "Senha precisa conter no mínimo 8 caracteres"
+        }
+        if containsDigit(value) {
+            return "Senha precisa conter no mínimo 1 dígito"
+        }
+        return nil
+    }
+    
+    func containsDigit(_ value: String) -> Bool {
+        let regularExpression = ".*[0-9]+.*"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
+        return !predicate.evaluate(with: value)
+    }
+    
+    
 }
     
     

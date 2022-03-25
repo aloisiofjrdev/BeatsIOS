@@ -14,7 +14,7 @@ import UIKit
 //    let fones: [Beat]
 //}
 
-struct FonesModel: Decodable {
+struct FonesModel: Codable {
     let beatsModel: String
     let rate: String
     let reviews: String

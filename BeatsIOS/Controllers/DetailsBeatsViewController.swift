@@ -24,8 +24,8 @@ class DetailsBeatsViewController: UIViewController {
     @IBOutlet weak var precoBeatsLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     
-    var foneVM: FonesViewModel?
     var detailsVM: DetailsViewModel = DetailsViewModel()
+    var arrayFones: [FonesModel] = []
     
     //MARK: - LifeCycle
     
@@ -33,7 +33,6 @@ class DetailsBeatsViewController: UIViewController {
         super.viewDidLoad()
         configureNavigation()
         setup()
-        setupContent()
     }
     
     
@@ -48,7 +47,6 @@ class DetailsBeatsViewController: UIViewController {
     
     func setup() {
         
-        
         buyButton.layer.cornerRadius = 20
         buyButton.tintColor = .white
         buyButton.setTitle(detailsVM.buyButtonText, for: .normal)
@@ -60,22 +58,12 @@ class DetailsBeatsViewController: UIViewController {
         avaliacaoLabel.text = detailsVM.avaliacaoText
         precoLabel.text = detailsVM.precoText
         
-//        if let foneVM = foneVM {
-//            self.modelBeatsLabel.text = foneVM.fone?.beatsModel
-//            self.nomeBeatsLabel.text = foneVM.fone?.beatsModel
-//            self.precoBeatsLabel.text = foneVM.fone?.price
-//            self.avaliacaoBeatsLabel.text = foneVM.fone?.reviews
-//            self.notaBeatsLabel.text = foneVM.fone?.rate
-//        }
-    }
-    
-    func setupContent() {
-        if let foneVM = foneVM {
-            self.modelBeatsLabel.text = foneVM.fone?.beatsModel
-            self.nomeBeatsLabel.text = foneVM.fone?.beatsModel
-            self.precoBeatsLabel.text = foneVM.fone?.price
-            self.avaliacaoBeatsLabel.text = foneVM.fone?.reviews
-            self.notaBeatsLabel.text = foneVM.fone?.rate
+        if let arrayFones = arrayFones.first {
+            self.modelBeatsLabel.text = arrayFones.beatsModel
+            self.nomeBeatsLabel.text = arrayFones.beatsModel
+            self.precoBeatsLabel.text = arrayFones.price
+            self.avaliacaoBeatsLabel.text = arrayFones.reviews
+            self.notaBeatsLabel.text = "⭐ \(arrayFones.rate)"
         }
     }
 }

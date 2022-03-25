@@ -18,14 +18,11 @@ class FonesViewModel {
     private weak var delegate: FonesViewModelDelegate?
     private let service: WebServiceProtocol
     private(set) var fones = [FonesModel]()
-    var fones2 = [FonesModel]()
     
     init(delegate: FonesViewModelDelegate, service: WebServiceProtocol = WebService()) {
         self.delegate = delegate
         self.service = service
     }
-    
-    var fone: FonesModel?
     
     func loadFones() {
         service.getFones { [weak self] result in

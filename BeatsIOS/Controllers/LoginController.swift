@@ -124,16 +124,6 @@ class LoginController: UIViewController {
         }
     }
     
-    private func displayMyAlertMessage(userMessage: String) {
-        
-        let myAlert = UIAlertController(title: "Alerta", message: userMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        
-        myAlert.addAction(okAction)
-        self.present(myAlert, animated: true, completion: nil)
-        
-    }
-    
 
     //MARK: - Actions
     
@@ -151,11 +141,11 @@ class LoginController: UIViewController {
                 UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                 resetFormulario()
             }else{
-                displayMyAlertMessage(userMessage: "Senha inválida")
+                self.displayMyAlertMessage(title: "Atenção", message: "Senha inválida", buttonTitle: "Ok")
                 return
             }
         }else{
-            displayMyAlertMessage(userMessage: "E-mail inválido")
+            self.displayMyAlertMessage(title: "Atenção", message: "E-mail inválido", buttonTitle: "Ok")
         }
         
     }

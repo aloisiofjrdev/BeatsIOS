@@ -120,17 +120,6 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    private func displayMyAlertMessage(userMessage: String) {
-        
-        let myAlert = UIAlertController(title: "Alerta", message: userMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        
-        myAlert.addAction(okAction)
-        self.present(myAlert, animated: true, completion: nil)
-        
-        
-    }
-    
     //MARK: - Actions
     
     @IBAction func userTextFieldChanged(_ sender: Any) {
@@ -200,7 +189,7 @@ class RegisterViewController: UIViewController {
         
         if userPw != userPwRepeat {
             
-            displayMyAlertMessage(userMessage: "As senha não são iguais")
+            self.displayMyAlertMessage(title: "Atenção", message: "As senhas não são iguais", buttonTitle: "Ok")
             return
         }
         
@@ -208,14 +197,7 @@ class RegisterViewController: UIViewController {
         UserDefaults.standard.set(userPw, forKey: "userPw")
     
         
-        let myAlert = UIAlertController(title: "Alerta", message: "Cadastro feito com sucesso!", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Ok", style: .default) { action in
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-        myAlert.addAction(okAction)
-        self.present(myAlert, animated: true, completion: nil)
+        self.displayMyAlertMessageWithActionPop(title: "Atenção", message: "Cadastro feito com sucesso!", buttonTitle: "Ok")
         
         
         resetFormulario()

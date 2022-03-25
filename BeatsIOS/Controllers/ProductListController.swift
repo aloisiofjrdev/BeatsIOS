@@ -103,6 +103,8 @@ class ProductListController: UIViewController {
     
 }
 
+    // MARK: - Delegates/DataSource
+
 extension ProductListController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

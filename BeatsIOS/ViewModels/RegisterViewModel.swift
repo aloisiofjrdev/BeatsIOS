@@ -10,6 +10,8 @@ import Foundation
 
 struct RegisterViewModel {
     
+    // MARK: - Properties
+    
     private var register: RegisterModel = RegisterModel()
     
     var nomeText: String {
@@ -43,6 +45,8 @@ struct RegisterViewModel {
     var alreadyRegisterButtonText: String {
         return self.register.alreadyRegisterButtonText
     }
+    
+    // MARK: - Methods
     
     func invalidUsername(_ value: String) -> String? {
         let regularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct BeatsList: Codable {
+struct FonesModel: Codable {
     let fones: [Beat]
 }
 

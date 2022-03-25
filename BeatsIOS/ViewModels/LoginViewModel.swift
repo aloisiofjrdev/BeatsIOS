@@ -10,6 +10,8 @@ import Foundation
 
 struct LoginsViewModel {
     
+    // MARK: - Properties
+    
     private var login: LoginModel = LoginModel()
     
     var nomeText: String {
@@ -39,6 +41,8 @@ struct LoginsViewModel {
     var signUpButtonText: String {
         return self.login.signUpButtonText
     }
+    
+    // MARK: - Methods
     
     func invalidUsername(_ value: String) -> String? {
         let regularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

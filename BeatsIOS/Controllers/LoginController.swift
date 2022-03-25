@@ -11,6 +11,7 @@ import Foundation
 class LoginController: UIViewController {
     
     //MARK: - Properties
+    
     @IBOutlet weak var gradienteImage: UIImageView!
     @IBOutlet weak var womanImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

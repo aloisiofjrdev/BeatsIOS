@@ -20,7 +20,7 @@ class Webservice {
                 completion(nil)
             } else if let data = data {
 
-            let fonesList = try? JSONDecoder().decode(BeatsList.self, from: data)
+            let fonesList = try? JSONDecoder().decode(FonesModel.self, from: data)
 
             if let fonesList = fonesList {
                 completion(fonesList.fones)

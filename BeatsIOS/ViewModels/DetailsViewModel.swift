@@ -9,6 +9,8 @@ import Foundation
 
 struct DetailsViewModel {
     
+    // MARK: - Properties
+    
     private var details: DetailsModel = DetailsModel()
     
     var nomeText: String {

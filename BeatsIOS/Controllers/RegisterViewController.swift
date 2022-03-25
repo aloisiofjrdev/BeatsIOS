@@ -12,6 +12,7 @@ import UIKit
 class RegisterViewController: UIViewController {
     
     //MARK: - Properties
+    
     @IBOutlet weak var nomeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var userTextField: UITextField!

@@ -12,6 +12,7 @@ class DetailsBeatsViewController: UIViewController {
     
     
     //MARK: - Properties
+    
     @IBOutlet weak var modelBeatsLabel: UILabel!
     @IBOutlet weak var nomeLabel: UILabel!
     @IBOutlet weak var nomeBeatsLabel: UILabel!
@@ -35,16 +36,16 @@ class DetailsBeatsViewController: UIViewController {
     }
     
     
-    //MARK: - Helpers
+    //MARK: - Methods
     
-    func configureNavigation() {
+    private func configureNavigation() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
         navigationItem.rightBarButtonItem?.tintColor = .white
         
     }
     
-    func setup() {
+    private func setup() {
         
         
         buyButton.layer.cornerRadius = 20

@@ -18,6 +18,7 @@ class FonesViewModel {
     private weak var delegate: FonesViewModelDelegate?
     private let service: WebServiceProtocol
     private(set) var fones = [FonesModel]()
+    var arrayFones: [FonesModel] = []
     
     init(delegate: FonesViewModelDelegate, service: WebServiceProtocol = WebService()) {
         self.delegate = delegate

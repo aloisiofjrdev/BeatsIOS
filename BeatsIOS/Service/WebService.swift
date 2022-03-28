@@ -20,8 +20,6 @@ class WebService: WebServiceProtocol {
         self.decoder = decoder
     }
     
-//    var errorString: String = "Error no decode getFones"
-    
     func getFones(completion: @escaping (Result<[FonesModel], NetworkErrors>) -> Void) {
         guard let url = URL(string: "https://42edf8f6-0a48-4351-a67a-7d0f30a8cb68.mock.pstmn.io/") else {
             completion(.failure(.invalidURL))

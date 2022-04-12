@@ -25,7 +25,6 @@ class LoginController: UIViewController {
     @IBOutlet weak var pwErrorLabel: UILabel!
     
     private let LoginVM: LoginsViewModel = LoginsViewModel()
-    private let registerVC = RegisterViewController()
     
     //MARK: - Lifecycle
     

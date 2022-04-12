@@ -18,7 +18,6 @@ class ProductListController: UIViewController {
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var doubtButton: UIButton!
     
-//    private var fonesListVM: FonesViewModelList?
     private lazy var fonesViewModel = FonesViewModel(delegate: self)
     
     
@@ -28,7 +27,6 @@ class ProductListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        setup()
         configureNavigation()
         fonesViewModel.loadFones()
         
@@ -76,23 +74,6 @@ class ProductListController: UIViewController {
         
     }
     
-    private func setup() {
-       
-        }
-        
-//        let url = URL(string: "https://74d92505-ba80-4848-b243-f79c813a14c8.mock.pstmn.io")!
-//
-//        WebService().getFones(url: url) { fones in
-//
-//            if let fones = fones {
-//                self.fonesListVM = FonesViewModelList(fones: fones)
-//
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
-    
     private func setLogOutUserDefaults() {
         UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
     }
@@ -128,14 +109,6 @@ extension ProductListController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "BeatsCell", for: indexPath) as? BeatsCellTableViewCell {
             
             cell.fone = fonesViewModel.fones[indexPath.row]
-            
-//            let foneVM = self.fonesListVM?.foneAtIndex(indexPath.row)
-//
-//            cell.nameFoneLabel.text = foneVM?.beatsModel
-//            cell.priceLabel.text = foneVM?.price
-//            cell.rateLabel.text = foneVM?.rate
-//            cell.reviewsLabel.text = foneVM?.reviews
-            
             
             return cell
         }
